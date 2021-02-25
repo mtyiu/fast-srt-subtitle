@@ -62,6 +62,7 @@
         source(type="video/mp4", ref="source", src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
         track(default, label="Default", ref="caption", src="/static/empty.vtt")
       shortcut(v-show="stage === 'edit'", @operate="keyHandler")
+      div#waveform
   footer.footer
     p.footer-p
       | Originially implemented by&nbsp;
@@ -75,6 +76,7 @@
 
 <script>
 import VTTConverter from 'srt-webvtt';
+import WaveSurfer from 'wavesurfer.js';
 
 import Navbar from './components/Navbar';
 import Shortcut from './components/Shortcut';
@@ -99,12 +101,24 @@ export default {
       previousTiming: 0,
       reactTime: 0.3,
       subtitleReview: '',
+      wavesurfer: null,
     };
   },
   computed: {
     nextLines() {
       return this.subtitles.slice(this.nextLine, this.nextLine + 4);
     },
+  },
+  mounted() {
+    if (!this.wavesurfer) {
+      this.wavesurfer = WaveSurfer.create({
+        container: '#waveform',
+        waveColor: 'violet',
+        progressColor: 'purple',
+        backend: 'MediaElement',
+        mediaControls: true,
+      });
+    }
   },
   beforeDestroy() {
     // Makesure remove all event handlers
@@ -131,8 +145,9 @@ export default {
     readVideo(evt) {
       const filename = evt.target.files[0];
       const url = URL.createObjectURL(filename);
-      this.$refs.source.src = url;
+      this.$refs.video.src = url;
       this.$refs.video.load();
+      this.wavesurfer.load(this.$refs.video);
     },
     startEdit() {
       if (this.subtitleText.length === 0) {
@@ -304,6 +319,10 @@ export default {
 };
 </script>
 
+<style lang="stylus">
+#waveform canvas
+  max-width none
+</style>
 <style lang="stylus" scoped>
 .container
   margin 20px
