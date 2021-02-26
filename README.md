@@ -1,4 +1,4 @@
-# https://mtyiu.github.io/fast-srt-subtitle
+# Fast SRT Subtitle Toolkit with Audio Waveform Visualization
 
 ![Electron CD](https://github.com/mtyiu/fast-srt-subtitle/workflows/Electron%20CD/badge.svg)
 ![Github Pages](https://github.com/mtyiu/fast-srt-subtitle/workflows/Github%20Pages/badge.svg)
