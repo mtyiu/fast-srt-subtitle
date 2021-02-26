@@ -1,7 +1,7 @@
-# Fast SRT Subtitle
+# https://mtyiu.github.io/fast-srt-subtitle
 
-![Electron CD](https://github.com/dsh0416/fast-srt-subtitle/workflows/Electron%20CD/badge.svg)
-![Github Pages](https://github.com/dsh0416/fast-srt-subtitle/workflows/Github%20Pages/badge.svg)
+![Electron CD](https://github.com/mtyiu/fast-srt-subtitle/workflows/Electron%20CD/badge.svg)
+![Github Pages](https://github.com/mtyiu/fast-srt-subtitle/workflows/Github%20Pages/badge.svg)
 
 This project is inspired by [wiwikuan/fast-srt-subtitle](https://github.com/wiwikuan/fast-srt-subtitle). See [this YouTube video](https://www.youtube.com/watch?v=Ath3BX9DBRs) for details.
 
@@ -11,15 +11,7 @@ This project is inspired by [wiwikuan/fast-srt-subtitle](https://github.com/wiwi
 
 ## Deployment
 
-The deployment script is descibed under `.github/workflows/deploy.yml`. If you have forked this project, you could easily deploy the project with GitHub Actions and GitHub Pages services by editing the custom domain:
-
-```yml
-- name: Setup Static Folder
-  run: |
-    echo "srt.coderemixer.com" > ./dist/CNAME
-```
-
-After editing the domain, activate the GitHub Pages in your repository settings, and it's all set.
+The deployment script is descibed under `.github/workflows/deploy.yml`.
 
 ## Build Setup
 
@@ -49,4 +41,4 @@ TODO: CONTRIBUTE GUIDE
 
 ## LICENSE
 
-This project is licensed under [GPLv3](https://github.com/dsh0416/fast-srt-subtitle/blob/master/LICENSE).
+This project is licensed under [GPLv3](https://github.com/mtyiu/fast-srt-subtitle/blob/master/LICENSE).
