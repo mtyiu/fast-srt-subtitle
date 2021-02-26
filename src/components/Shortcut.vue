@@ -71,4 +71,8 @@ export default {
   text-align center
 .operation
   cursor pointer
+  margin 10px 0
+  @media (min-width: 1024px)
+    width 50%
+    display inline-block
 </style>

@@ -11,6 +11,9 @@
         | {{ $t("close") }}
   .container
     .panel
+      div#waveform(ref="waveform")
+  .container
+    .panel
       div(v-if="stage === 'prepare'")
         input.hidden(type="file", ref="textLoader", accept="text/plain", @change="readText")
         vk-button.inline-button(@click="loadText")
@@ -54,7 +57,7 @@
       input.hidden(
         type="file",
         ref="videoLoader",
-        accept="audio/mp4, video/mp4",
+        accept="audio/*, video/*",
         @change="readVideo")
       vk-button(@click="loadVideo", v-if="stage === 'prepare'")
         | {{ $t("loadVideo") }}
@@ -62,7 +65,6 @@
         source(type="video/mp4", ref="source", src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
         track(default, label="Default", ref="caption", src="/static/empty.vtt")
       shortcut(v-show="stage === 'edit'", @operate="keyHandler")
-      div#waveform
   footer.footer
     p.footer-p
       | Originially implemented by&nbsp;
@@ -71,6 +73,9 @@
       | , and refactored by&nbsp;
       a(href="https://github.com/dsh0416/")
         | @dsh0416
+      |  and&nbsp;
+      a(href="https://github.com/mtyiu/")
+        | @mtyiu
       | &nbsp;with ❤️️.
 </template>
 
@@ -117,6 +122,8 @@ export default {
         progressColor: 'purple',
         backend: 'MediaElement',
         mediaControls: true,
+        normalize: true,
+        height: 100,
       });
     }
   },
@@ -324,6 +331,9 @@ export default {
   max-width none
 </style>
 <style lang="stylus" scoped>
+nav.uk-navbar
+  padding-left 25px
+  padding-right 25px
 .container
   margin 20px
   @media (min-width: 800px)
@@ -332,7 +342,7 @@ export default {
   display none
 .panel
   width 100%
-  margin 10px 10px 85px 10px
+  margin 10px
   @media (min-width: 800px)
     flex 1
 .inline-button
@@ -345,13 +355,14 @@ export default {
 .alt-text
   color #aaa
 .footer
-  position fixed
-  left 0
-  bottom 0
-  right 0
   width 100%
-  padding 20px 0 0 0
-  background-color #eee
-  color #000
+  background-color transparent
   text-align center
+.footer p
+  display inline-block
+  border-top 1px solid #eee
+  margin 0
+  padding 15px
+  font-size 0.8em
+  color #aaa
 </style>

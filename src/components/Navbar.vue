@@ -1,7 +1,7 @@
 <template lang="pug">
 vk-navbar
   vk-navbar-nav
-    vk-navbar-nav-item(title="Fast SRT Subtitle Toolkit", active)
+    vk-navbar-nav-item(title="Fast SRT Subtitle Toolkit with Audio Waveform Visualization", active)
   vk-navbar-nav(slot="right")
     vk-navbar-nav-dropdown(title="Language")
       vk-navbar-nav-dropdown-nav
@@ -14,6 +14,7 @@ vk-navbar
       icon="cloud-download",
       :title="$t('downloadApp')",
       href="https://github.com/dsh0416/fast-srt-subtitle/actions?query=workflow%3A%22Electron+CD%22")
+    vk-navbar-nav-item(icon="github", title="GitHub", href="https://github.com/mtyiu/fast-srt-subtitle")
 </template>
 
 <script>
